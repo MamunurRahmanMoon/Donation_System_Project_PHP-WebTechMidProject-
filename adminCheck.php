@@ -1,11 +1,25 @@
 <?php
-    if(trim($userContent[0]) === $username && trim($userContent[1]) === $password && trim($userContent[3]) === $role){
-        $_SESSION['status'] = true;
-        echo trim($userContent[0]);
-        echo trim($userContent[1]);
-        echo trim($userContent[3]);
-        echo $role;
+    $adminUsername = $_POST['admin_username'];
+    $adminCode = $_POST['admin_code'];
+    $adminFile = '../LogIn/admin.txt';
+    if(isset($_POST['btn'])){
 
-        // header('location: admin.php');
+        if($adminUsername != null || $adminCode != null){
+            $adminFile=fopen('../LogIn/admin.txt', 'r');
+            while(!feof($adminFile)){
+                $user = fgets($adminFile);
+                $userContent = explode('|', $user);
+
+                if(trim($userContent[0]) == $adminUsername && trim($userContent[1]) == $adminCode){
+                    $_SESSION['status'] = true;
+                    header('location: admin.php');
+                }
+                
+            }
+            echo "Invalid username or code,Go Back & Reload the page again";
+        }
+        else{
+            header('location: adminLogIn.php?err=empty');
+        }
     }
 ?>

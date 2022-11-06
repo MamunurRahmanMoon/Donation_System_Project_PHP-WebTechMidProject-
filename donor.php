@@ -1,9 +1,3 @@
-<?php
-    // session_start();
-    // if(!isset($_SESSION['status'])){
-    //     header('location: login.php?err=bad_request');
-    // }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +8,7 @@
     <title>Donor</title>
 </head>
 <body>
-    <form method="post" action="donorCheck.php" enctype=""></form>
+    <form method="POST" action="donorCheck.php" enctype="">
     <div>
         <a href="home.php">Home</a>
     </div>
@@ -45,7 +39,17 @@
             <legend><b>Total Donation Collected</b></legend>
             <table>
                 <tr>
-                   Taka: <input type="text" value="0">
+                   Taka: <input type="text"
+                   <?php
+                        $donationFile=file('../LogIn/donation.txt');
+                        $total = 0;
+                        foreach($donationFile as $line){
+                            // echo (int)$line."\r\n";
+                            $total = $total + (int)$line;
+                        }
+                        echo "value=".$total; 
+                   ?>
+                   >
                 </tr>
             </table>
         </fieldset>
@@ -54,25 +58,43 @@
         <br>
 
      <div style= "width:250px">
+        
             <fieldset>
                 <legend><b>Become a Donor</b></legend>
                 <table>
                     <tr>
                         <td>
-                            <input type="number" placeholder="Enter donation amount">
-                            <a href="donor.php">Donate Now</a>
+                            <input name="donation" value="10" max="10000" min="10" type="number" placeholder="Enter donation amount">
+                            <br>
+                            <br>
+                            <input type="submit" name="donate_btn" value="Donate Now"></input>
                         </td>
                     </tr>
                 </table>
             </fieldset>
         </div>
-
         <br>
+    </center>
+    </form>
+    <center>
+        <div>
+            <?php
+                    $donationFile = file('../LogIn/donation.txt');
 
-        <div style= "width:250px">
-            <a href="logout.php">Log-out </a>
+                    $lastDonation = array_pop($donationFile);
+                    echo "You have successully donated <b>".$lastDonation."Tk</b>"; 
+                                    
+            ?>
         </div>
     </center>
+    <br>
+    <br>
+    <center>
+    <div style= "width:250px">
+            <a href="logout.php">Log-out </a>
+    </div>
+    </center>
+    
 </body>
 
 
