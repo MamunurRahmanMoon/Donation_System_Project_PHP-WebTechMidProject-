@@ -1,7 +1,10 @@
 <?php
     session_start();
-    if(!isset($_SESSION['status'])){
+    if(!isset($_SESSION['volunteerStatus'])){
         header('location: login.php?err=bad_request');
+    }
+    if(isset($_SESSION['volunteerStatus'])){
+    echo "You are logged in as ".$_SESSION['volunteerStatus'];
     }
 ?>
 <!DOCTYPE html>

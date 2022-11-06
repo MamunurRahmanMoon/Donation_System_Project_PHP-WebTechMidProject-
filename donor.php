@@ -1,4 +1,12 @@
-
+<?php
+    session_start();
+    if(!isset($_SESSION['donorSession'])){
+        header('location: login.php?err=bad_request');
+    }
+    if(isset($_SESSION['donorSession'])){
+    echo "You are logged in as ".$_SESSION['donorSession'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

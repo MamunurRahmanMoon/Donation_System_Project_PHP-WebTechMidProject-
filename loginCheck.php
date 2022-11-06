@@ -18,13 +18,17 @@
 
         // Donor Verification
         else if($username != null && $password != null && $role == 'Donor'){
-            $donorFile=fopen('../LogIn/donors.txt', 'r');
+            $donorFile=fopen('../LogIn/donors.txt', 'r'); //r = read only
             while(!feof($donorFile)){
                 $donor = fgets($donorFile);
                 $donorContent = explode('|', $donor);
 
                 if(trim($donorContent[0]) == $username && trim($donorContent[1]) == $password && trim($donorContent[3]) == $role){
-                    $_SESSION['status'] = true;
+
+                    // Session verification
+                    $_SESSION['donorStatus'] = true;
+                    $donorSession = $username;
+                    $_SESSION['donorSession'] = $donorSession;
                     header('location: donor.php');
                 }
             }
@@ -38,7 +42,11 @@
                 $requesterContent = explode('|', $requester);
 
                 if(trim($requesterContent[0]) == $username && trim($requesterContent[1]) == $password && trim($requesterContent[3]) == $role){
-                    $_SESSION['status'] = true;
+
+                    // session verification
+                    $_SESSION['requesterStatus'] = true;
+                    $requesterSession = $username;
+                    $_SESSION['requesterStatus'] = $requesterSession;
                     header('location: requester.php');
                 }
             }
@@ -54,7 +62,11 @@
                 $volunteerContent = explode('|', $volunteer);
 
                 if(trim($volunteerContent[0]) == $username && trim($volunteerContent[1]) == $password && trim($volunteerContent[3]) == $role){
-                    $_SESSION['status'] = true;
+                    
+                    // session verification
+                    $_SESSION['volunteerStatus'] = true;
+                    $volunteerSession = $username;
+                    $_SESSION['volunteerStatus'] = $volunteerSession;
                     header('location: volunteer.php');
                 }
             }

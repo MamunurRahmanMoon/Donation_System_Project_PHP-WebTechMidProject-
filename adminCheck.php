@@ -11,7 +11,10 @@
                 $userContent = explode('|', $user);
 
                 if(trim($userContent[0]) == $adminUsername && trim($userContent[1]) == $adminCode){
-                    $_SESSION['status'] = true;
+                    // session verification
+                    $_SESSION['adminStatus'] = true;
+                    $adminSession = $adminUsername;
+                    $_SESSION['adminStatus'] = $adminSession;
                     header('location: admin.php');
                 }
                 

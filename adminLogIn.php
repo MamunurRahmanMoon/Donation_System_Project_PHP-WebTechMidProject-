@@ -1,11 +1,6 @@
 <?php
     // Error Handling Message
-    if(isset($_GET['err'])){
-        
-        if($_GET['err'] == 'empty'){
-            echo "Enter Admin username & Admin code provided from authority";
-        }
-    }
+    
 ?>
 
 

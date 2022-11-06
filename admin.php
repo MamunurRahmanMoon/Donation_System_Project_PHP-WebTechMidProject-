@@ -1,9 +1,5 @@
 <?php
-    // session_start();
-    // if(!isset($_SESSION['status'])){
-    //     header('location: login.php?err=bad_request');
-    // }
-
+    
 ?>
 
 <html lang="en">
@@ -28,20 +24,7 @@
              </tr>
             
             <?php
-              $file = fopen('../LogIn/users.txt', 'r');
-              if(isset($_POST['search_users']))
-                while(!feof($file)){
-                    $user = fgets($file);
-                    $userContent = explode('|', $user);
-                    $names = trim($userContent[0]);
-                    $userNo = 0;
-                    if(trim($userContent[0]) === 'moon'){
-                                echo "Name: ".$names."</br>"; 
-                    }
-                    else{
-                        echo "  No match"."</br>";
-                    }
-                }
+              echo "* Under construction *";
              ?>
              <br>
         </table>
@@ -159,6 +142,41 @@
                             // echo "  No match"."</br>";
                         }
                     }
+             ?>
+             <br>
+        </table>
+    </fieldset>
+    </div>
+    
+    <!-- View Requests -->
+    <div >
+    <fieldset>
+        <legend><b>View Requests</b></legend>
+        <table border=1 >
+             <tr>
+                <td>
+                <input type="submit" name="view_requests" value="View"/>
+                </td>
+             </tr>
+            
+            <?php
+                $requestsFile = file('../LogIn/uploads/documents/requests.txt');
+                if(isset($_POST['view_requests'])){
+                    foreach($requestsFile as $line){
+                        echo $line."</br>";
+                    }
+                }
+                    // while(!feof($requestsFile)){
+                    //     $user = fgets($requestsFile);
+                    //     $userContent = explode('|', $user);
+
+                    //     $fullname = trim($userContent[0]);
+                    //     @$username = trim($userContent[1]);
+                    //     @$documentId = trim($userContent[2]);
+
+                    //     @$requeestedAmount = trim( $userContent[3]);
+                    //     echo "<b>Fullname: </b>".$fullname."|"."<b>Username: </b>".$username."|"."<b>Documnet ID: </b>".$documentId."|"."<b>Requested amount: </b>".$requeestedAmount."</br>"; 
+                    // }
              ?>
              <br>
         </table>
