@@ -1,5 +1,10 @@
 <?php
-    
+    if(isset($_SESSION['donorStatus']) || isset($_SESSION['requesterStatus']) || isset($_SESSION['volunteerStatus'])){
+        header('location: adminLogIn.php');
+       
+    }
+    // if(isset($_SESSION['adminStatus'])){}
+        
 ?>
 
 <html lang="en">
@@ -182,6 +187,47 @@
         </table>
     </fieldset>
     </div>
+
+     <!-- Authorized documents
+     <div >
+    <fieldset>
+        <legend><b>View Authorized Documents</b></legend>
+        <table border=1 >
+             <tr>
+                <td>
+                <input type="submit" name="view_authorized_documnet" value="View"/>
+                </td>
+             </tr>
+            
+            <?php
+                // $documnetFile = '../LogIn/Authorization Docs/authorizationDoc.txt';
+                // $documnetFile = fopen('../LogIn/Authorization Docs/authorizationDoc.txt', 'r');
+
+                // if(isset($_POST['view_authorized_documnet']))
+                //     while(!feof($documnetFile)){
+                //         $documnet = fgets($documnetFile);
+                //         $documnetContent = explode('|', $documnet);
+
+                //         $docUsername = $_SESSION['documentUsername'];
+                        
+                //         $docSerialNo = $_SESSION['documentSerialNo'];
+
+                //         $username = trim($documnetContent[0]);
+                //         @$serialNo = trim($documnetContent[1]);
+                        
+                //         if($username == $docUsername && $serialNo == $docSerialNo){
+
+                //                     echo "<b>Username: </b>".$username."|"."<b>Document serial no : </b>".$serialNo."|Authorized"."</br>"; 
+                //         }
+                //         else{
+                //             // echo "  No match"."</br>";
+                //         }
+                //     }
+             ?>
+             <br>
+        </table>
+    </fieldset>
+    </div> -->
     </form>
 </body>
 

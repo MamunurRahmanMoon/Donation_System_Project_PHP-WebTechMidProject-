@@ -1,9 +1,12 @@
 <?php
-    // Error Handling Message
-    
+    //Error Handling Message
+    // if(isset($_GET['err'])){
+        
+    //     if($_GET['err'] == 'bad_request'){
+    //         echo "Log in first\r\n";
+    //     }
+    // }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

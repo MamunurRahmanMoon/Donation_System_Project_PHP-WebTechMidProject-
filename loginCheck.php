@@ -28,7 +28,9 @@
                     // Session verification
                     $_SESSION['donorStatus'] = true;
                     $donorSession = $username;
-                    $_SESSION['donorSession'] = $donorSession;
+                    $_SESSION['donorStatus'] = $donorSession;
+
+                    setcookie('donorStatus', 'true', time()+3600, '/');
                     header('location: donor.php');
                 }
             }
@@ -47,6 +49,8 @@
                     $_SESSION['requesterStatus'] = true;
                     $requesterSession = $username;
                     $_SESSION['requesterStatus'] = $requesterSession;
+
+                    setcookie('requesterStatus', 'true', time()+3600, '/');
                     header('location: requester.php');
                 }
             }
@@ -67,6 +71,7 @@
                     $_SESSION['volunteerStatus'] = true;
                     $volunteerSession = $username;
                     $_SESSION['volunteerStatus'] = $volunteerSession;
+                    setcookie('volunteerStatus', 'true', time()+3600, '/');
                     header('location: volunteer.php');
                 }
             }

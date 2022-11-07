@@ -16,6 +16,17 @@
     <title>Document</title>
 </head>
 <body>
-    This is volunteer Page
+    <div>
+        <form action="">
+            <fieldset>
+                <legend><b>View running campaigns</b></legend>
+                <table>
+                    <tr>
+
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
 </body>
 </html>
